@@ -58,3 +58,19 @@ export async function POST(request: Request) {
     { status: 201 }
   );
 }
+
+export async function GET() {
+  await connectToDatabase();
+  const dogs = await Dog.find();
+  return NextResponse.json(
+    { dogs },
+    {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
+    }
+  );
+}
