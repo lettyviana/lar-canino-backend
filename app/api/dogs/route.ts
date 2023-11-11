@@ -59,7 +59,7 @@ export async function POST(request: Request) {
   );
 }
 
-export async function GET() {
+export async function GET(request: Request) {
   await connectToDatabase();
   const dogs = await Dog.find();
   return NextResponse.json(
