@@ -74,3 +74,11 @@ export async function GET(request: Request) {
     }
   );
 }
+
+export async function DELETE(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get("id");
+  await connectToDatabase();
+  await Dog.findByIdAndDelete(id);
+  return NextResponse.json({ message: "Registro excluído" }, { status: 200 });
+}
