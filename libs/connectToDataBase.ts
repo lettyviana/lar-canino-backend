@@ -10,8 +10,10 @@ if (!MONGODB_CONNECTION_STRING) {
 
 const connectToDatabase = async () => {
   try {
-    await mongoose.connect(MONGODB_CONNECTION_STRING);
-    console.log("Conectado ao banco de dados.");
+    if (mongoose.connection.readyState === 0) {
+      await mongoose.connect(MONGODB_CONNECTION_STRING);
+      console.log("Conectado ao banco de dados.");
+    }
   } catch (error) {
     console.error("Erro ao conectar o MongoDB:", error);
   }
