@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export const ALLOWED_ORIGINS = [
-  "http://localhost:3001",
-  "http://localhost:3002",
-  `https://${process.env.VERCEL_PRODUCTION_LAR_CANINO_URL}`,
-  `https://${process.env.VERCEL_PRODUCTION_LAR_CANINO_DASHBOARD_URL}`,
-];
+const isDevelopment = process.env.NODE_ENV === "development";
+
+export const ALLOWED_ORIGINS = isDevelopment
+  ? [
+      `https://${process.env.VERCEL_PRODUCTION_LAR_CANINO_URL}`,
+      `https://${process.env.VERCEL_PRODUCTION_LAR_CANINO_DASHBOARD_URL}`,
+    ]
+  : ["http://localhost:3001", "http://localhost:3002"];
 
 export const middleware = (request: NextRequest) => {
   const requestOrigin = request.headers.get("origin");
