@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const isDevelopment = process.env.NODE_ENV === "development";
+const isProduction = process.env.NODE_ENV === "production";
 
-export const ALLOWED_ORIGINS = isDevelopment
+export const ALLOWED_ORIGINS = isProduction
   ? [
       `https://${process.env.VERCEL_PRODUCTION_LAR_CANINO_URL}`,
       `https://${process.env.VERCEL_PRODUCTION_LAR_CANINO_DASHBOARD_URL}`,
