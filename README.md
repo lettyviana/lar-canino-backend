@@ -49,6 +49,8 @@ Pelos meus testes no Postman, consegui reproduzir as tarefas solicitadas, mas ag
 
 ## **Rotas disponíveis**
 
+OBS. Ainda estou testando e ajustando
+
 ## **Admin**
 ### Dashboard
 
